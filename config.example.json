@@ -1,0 +1,19 @@
+{
+  "_comment": "Copy to cleanup-config.json next to the script. All keys are optional; missing keys fall back to the built-in defaults.",
+
+  "_launcherMatch": "Substrings/regex matched against a cmd.exe window's command line OR its window title. These identify the launcher windows that may become orphaned.",
+  "launcherMatch": ["n8n-serve", "n8n start", "start-public"],
+
+  "_workerProcesses": "If any process BELOW a launcher window has one of these names, the launcher is considered alive and is never touched.",
+  "workerProcesses": ["node.exe", "cloudflared.exe", "python.exe", "java.exe"],
+
+  "_livenessPorts": "The process listening on each of these ports, plus all of its ancestors, forms the keep-set that is never touched.",
+  "livenessPorts": [5678],
+
+  "_graceSeconds": "Never kill a launcher window younger than this (protects a service that is still starting up).",
+  "graceSeconds": 60,
+
+  "_logFile": "Where the scan results are appended. Trimmed to the last 200 lines once it exceeds maxLogBytes.",
+  "logFile": "cleanup.log",
+  "maxLogBytes": 204800
+}
