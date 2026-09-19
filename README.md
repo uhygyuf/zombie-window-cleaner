@@ -61,6 +61,10 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1 -Uninstall
 No admin rights are needed, nothing is copied anywhere, and the task simply runs the script in
 place. Uninstalling removes the task and nothing else.
 
+**The scheduled task runs completely invisibly.** It is launched through `hidden-runner.vbs`,
+because on Windows 11 (where Windows Terminal is the default terminal host) a task using
+`powershell -WindowStyle Hidden` still flashes a terminal window on every run.
+
 ---
 
 ## Configuration
